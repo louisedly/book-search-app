@@ -1,13 +1,39 @@
 import React, { Component } from 'react';
+import Header from './Header';
+import Footer from './Footer';
+import Books from './Books';
+
 import './App.css';
 
+// Get user input
+// Output list of books from google books api based from user's input and save that data to state
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userInput: ""
+    }
+  }
+
+  componentDidMount() {
+    
+}
+
   render() {
 
     return (
-      <div className="App">
-        <h1>Hellooooooo</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam ullam minus nostrum modi. Sequi explicabo alias praesentium, nulla distinctio et consequuntur obcaecati nobis est blanditiis.</p>
+      <div className="app wrapper">
+
+        <Header />
+
+        <main>
+          <Books />
+
+        </main>
+        
+        <Footer />
+
       </div>
     );
   }
