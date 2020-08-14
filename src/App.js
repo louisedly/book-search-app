@@ -31,7 +31,9 @@ class App extends Component {
           books: [...response.data.items],
         })
       }).catch(error => {
-        alert("Could not find search query. Please check the spelling and try again.")
+        alert("Sorry, search query could not be found. Please check the spelling and try again.")
+        return <Header />
+              <SearchBar />
       })
   }
 

@@ -7,13 +7,12 @@ const SearchBar = (props) => {
 
             <label htmlFor="search-bar"></label>
 
-            <input onChange={props.handleUserInput} 
-            type="text" 
+            <input onChange={props.handleUserInput} type="text" 
             placeholder="Search for your favourite book here.." 
             id="search-bar" required/>
 
             <button type="submit">Search</button>
-            
+
         </form>
     )
 }
