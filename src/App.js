@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import Books from './Books';
+import Main from './Main';
 
 import './App.css';
 
@@ -17,21 +17,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    
+
 }
 
   render() {
 
     return (
-      <div className="app wrapper">
+      <div className="app">
 
         <Header />
-
-        <main>
-          <Books />
+        <main className="wrapper">
+          <Main />
 
         </main>
-        
         <Footer />
 
       </div>
