@@ -126,6 +126,8 @@ img {
   box-shadow: 8px 10px #888888;
 }
 
+/* Media Queries */
+
 @media (max-width: 866px) {
 
   html {
