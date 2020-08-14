@@ -32,8 +32,7 @@ class App extends Component {
         })
       }).catch(error => {
         alert("Sorry, search query could not be found. Please check the spelling and try again.")
-        return <Header />
-              <SearchBar />
+        window.location.reload();
       })
   }
 
