@@ -1,35 +1,62 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import SearchBar from './SearchBar';
+import BookResults from './BookResults';
 import Footer from './Footer';
-import Main from './Main';
-
+import axios from 'axios';
 import './App.css';
 
-// Get user input
-// Output list of books from google books api based from user's input and save that data to state
-
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      books: [],
       userInput: ""
     }
   }
 
-  componentDidMount() {
+  getBooks = (event) => {
+    event.preventDefault();
 
-}
+    axios({
+      url: `https://www.googleapis.com/books/v1/volumes`,
+      method: `GET`,
+      responseType: `json`,
+      params: {
+        q: `${this.state.userInput}`
+      }
+    })
+      .then((response) => {
+        this.setState({
+          books: [...response.data.items],
+        })
+      }).catch(error => {
+        alert("Could not find search query. Please check the spelling and try again.")
+      })
+  }
+
+  handleUserInput = (event) => {
+    this.setState({
+      userInput: event.target.value
+    })
+  }
 
   render() {
-
     return (
+
       <div className="app">
 
         <Header />
+
         <main className="wrapper">
-          <Main />
+
+          <SearchBar getBooks={this.getBooks}
+            handleUserInput={this.handleUserInput}/>
+
+          <BookResults books={this.state.books} />
 
         </main>
+
         <Footer />
 
       </div>

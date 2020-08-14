@@ -1,5 +1,4 @@
 import React from 'react';
-import Book from './Book';
 
 const BookResults = (props) => {
 
@@ -7,14 +6,18 @@ const BookResults = (props) => {
         <div className="book-results">
             {
                 props.books.map((book) => {
-                    return <Book 
-                                key={book.id}
-                                image={book.volumeInfo.imageLinks.thumbnail} 
-                                title={book.volumeInfo.title}
-                                author={book.volumeInfo.authors}
-                                year={book.volumeInfo.publishedDate}
-                                info={book.volumeInfo.infoLink}
-                            />
+                    return (
+                        <div className="book-container" key={book.id}>
+                            <a href={book.volumeInfo.infoLink} target={"_blank"} rel={"noopener noreferrer"}>
+                                <div className="book-info">
+                                    <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+                                    <h2>Title: {book.volumeInfo.title}</h2>
+                                    <h3>Author: {book.volumeInfo.authors}</h3>
+                                    <h3>Published: {book.volumeInfo.publishedDate}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    )
                 })
             }
         </div>
@@ -23,3 +26,4 @@ const BookResults = (props) => {
 
 
 export default BookResults;
+
